@@ -8,14 +8,21 @@ appcompat = "1.7.1"
 material = "1.13.0"
 materialIconsExtended = "1.7.8"
 
+# Koin
+koin-bom = "4.1.1"
+
 # Compose
 compose = "2025.10.01"
 uiTestAndroid = "1.9.4"
+
+# Coroutines
+coroutines = "1.10.2"
 
 # Tests
 junit = "4.13.2"
 junitVersion = "1.3.0"
 mockk = "1.14.6"
+turbine = "1.2.1"
 
 # Android Tests
 espressoCore = "3.7.0"
@@ -43,12 +50,23 @@ compose-tooling-preview-android = { module = "androidx.compose.ui:ui-tooling-pre
 compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
+# Koin
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose" }
+koin-test = { module = "io.insert-koin:koin-test-junit4" }
+
 # Tests
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 

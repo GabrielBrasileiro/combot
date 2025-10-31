@@ -6,7 +6,7 @@ package br.com.gabrielbrasileiro.combot.core
  * This class defines lifecycle hooks that can be overridden to configure or
  * prepare the testing environment before and after a test action is executed.
  *
- * Subclasses can override [onStart] and [onEnd] to define custom setup or
+ * Subclasses can override [onStart] and [onFinished] to define custom setup or
  * teardown logic specific to each test.
  */
 open class CombotSetup {
@@ -18,7 +18,7 @@ open class CombotSetup {
      * mock data, setting UI state, or configuring dependencies needed for the
      * test.
      */
-    open fun onStart() {}
+    protected open fun onStart() {}
 
     /**
      * Called after the test actions are executed.
@@ -26,5 +26,14 @@ open class CombotSetup {
      * Override this method to define cleanup logic, such as resetting state,
      * clearing resources, or validating postconditions required for subsequent tests.
      */
-    open fun onEnd() {}
+    protected open fun onFinished() {}
+
+    internal fun onStartContext() {
+        onStart()
+    }
+
+    internal fun onFinishContext() {
+        onFinished()
+    }
+
 }

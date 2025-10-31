@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">combot</string>
+    <string name="alert_message">An alert being received!</string>
+    <string name="new_message">Load new message</string>
 </resources>

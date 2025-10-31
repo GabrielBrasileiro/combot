@@ -22,12 +22,12 @@ class CombotTestRule<R : CombotSemantics, STP : CombotSetup, ACT : CombotAction,
 
     override fun starting(description: Description?) {
         super.starting(description)
-        setup.onStart()
+        setup.onStartContext()
     }
 
     override fun finished(description: Description?) {
         super.finished(description)
-        setup.onEnd()
+        setup.onFinishContext()
     }
 }
 
@@ -130,6 +130,21 @@ fun <R : CombotSemantics, STP : CombotSetup, ACT : CombotAction> createCombotRul
         setup = setup,
         action = action,
         assert = { CombotAssertDefault() }
+    )
+
+    return CombotTestRule(arrange)
+}
+
+@JvmName("createCombotRuleOnlyAssert")
+fun <R : CombotSemantics, AST : CombotAssert> createCombotRule(
+    rule: R,
+    assert: () -> AST
+): CombotTestRule<R, *, *, AST> {
+    val arrange = CombotArrangement(
+        rule = rule,
+        setup = { CombotSetupDefault() },
+        action = { CombotActionDefault() },
+        assert = assert
     )
 
     return CombotTestRule(arrange)

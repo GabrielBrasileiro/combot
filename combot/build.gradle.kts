@@ -34,7 +34,6 @@ dependencies {
     // Compose
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.test)
-    implementation(libs.compose.ui.test.manifest)
     implementation(libs.compose.ui.test.android)
 
     // Tests

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_padding">24dp</dimen>
+    <dimen name="text_padding">24dp</dimen>
+    <dimen name="column_spacing">16dp</dimen>
+    <dimen name="progress_indicator_size">16dp</dimen>
+    <dimen name="progress_indicator_stroke">2dp</dimen>
+</resources>
