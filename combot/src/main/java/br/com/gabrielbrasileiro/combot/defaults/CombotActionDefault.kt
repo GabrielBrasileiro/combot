@@ -6,7 +6,7 @@ import br.com.gabrielbrasileiro.combot.errors.CombotActionNotImplementedExceptio
 @PublishedApi
 internal class CombotActionDefault : CombotAction() {
 
-    init {
+    fun emitCombotActionError() {
         throw CombotActionNotImplementedException()
     }
 

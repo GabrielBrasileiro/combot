@@ -10,7 +10,7 @@ class CombotSetupTest {
         val setup = CombotSetup()
 
         // When
-        setup.onStart()
+        setup.onStartContext()
     }
 
     @Test
@@ -19,7 +19,7 @@ class CombotSetupTest {
         val setup = CombotSetup()
 
         // When
-        setup.onEnd()
+        setup.onFinishContext()
     }
 
 }

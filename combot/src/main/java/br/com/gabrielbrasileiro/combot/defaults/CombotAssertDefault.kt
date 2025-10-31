@@ -6,7 +6,7 @@ import br.com.gabrielbrasileiro.combot.errors.CombotAssertNotImplementedExceptio
 @PublishedApi
 internal class CombotAssertDefault : CombotAssert() {
 
-    init {
+    fun emitCombotAssertError() {
         throw CombotAssertNotImplementedException()
     }
 

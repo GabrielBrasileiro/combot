@@ -12,12 +12,14 @@ class CombotActionDefaultTest {
     private val provider = mockk<SemanticsNodeInteractionsProvider>()
 
     @Test
-    fun `CombotActionDefault Should throw CombotAssertNotImplementedException when instantiated`() {
+    fun `emitCombotActionError Should throw CombotAssertNotImplementedException when instantiated`() {
         // Given
         CombotProvider.setSemantics(provider)
 
+        val combotAction = CombotActionDefault()
+
         // When
-        val result = runCatching { CombotActionDefault() }
+        val result = runCatching { combotAction.emitCombotActionError() }
 
         // Then
         assertTrue(result.exceptionOrNull() is CombotActionNotImplementedException)

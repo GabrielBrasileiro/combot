@@ -20,12 +20,12 @@ class CombotTestRule<R : CombotSemantics, STP : CombotSetup, ACT : CombotAction,
 
     private val setup = arrangement.setupScope
 
-    override fun starting(description: Description?) {
+    public override fun starting(description: Description?) {
         super.starting(description)
         setup.onStartContext()
     }
 
-    override fun finished(description: Description?) {
+    public override fun finished(description: Description?) {
         super.finished(description)
         setup.onFinishContext()
     }

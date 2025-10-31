@@ -3,6 +3,8 @@ package br.com.gabrielbrasileiro.combot.arrange
 import br.com.gabrielbrasileiro.combot.core.CombotAction
 import br.com.gabrielbrasileiro.combot.core.CombotAssert
 import br.com.gabrielbrasileiro.combot.core.CombotSetup
+import br.com.gabrielbrasileiro.combot.defaults.CombotActionDefault
+import br.com.gabrielbrasileiro.combot.defaults.CombotAssertDefault
 import br.com.gabrielbrasileiro.combot.defaults.CombotSetupDefault
 import br.com.gabrielbrasileiro.combot.provider.CombotProvider
 import br.com.gabrielbrasileiro.combot.provider.CombotSemantics
@@ -30,12 +32,12 @@ class CombotArrangement<R : CombotSemantics, STP : CombotSetup, ACT : CombotActi
     inline infix fun setup(
         onSetup: STP.(rule: R) -> Unit
     ): CombotArrangement<R, STP, ACT, AST> {
-        val currentScope = setupScope
+        val currentSetupScope = setupScope
 
-        if (currentScope is CombotSetupDefault) {
-            currentScope.emitCombotSetupError()
+        if (currentSetupScope is CombotSetupDefault) {
+            currentSetupScope.emitCombotSetupError()
         } else {
-            onSetup(currentScope, rule)
+            onSetup(currentSetupScope, rule)
         }
 
         return this
@@ -44,14 +46,28 @@ class CombotArrangement<R : CombotSemantics, STP : CombotSetup, ACT : CombotActi
     inline infix fun action(
         onAction: ACT.() -> Unit
     ): CombotArrangement<R, STP, ACT, AST> {
-        actionScope.apply(onAction)
+        val currentActionScope = actionScope
+
+        if (currentActionScope is CombotActionDefault) {
+            currentActionScope.emitCombotActionError()
+        } else {
+            onAction(currentActionScope)
+        }
+
         return this
     }
 
     inline infix fun assert(
         onAssert: AST.() -> Unit
     ): CombotArrangement<R, STP, ACT, AST> {
-        assertScope.apply(onAssert)
+        val currentAssertScope = assertScope
+
+        if (currentAssertScope is CombotAssertDefault) {
+            currentAssertScope.emitCombotAssertError()
+        } else {
+            onAssert(currentAssertScope)
+        }
+
         return this
     }
 
