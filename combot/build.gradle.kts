@@ -52,7 +52,7 @@ afterEvaluate {
 
                 groupId = "br.com.gabrielbrasileiro"
                 artifactId = "combot"
-                version = "0.0.5"
+                version = "0.0.6"
 
                 pom {
                     name.set("Combot")
