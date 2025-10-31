@@ -7,7 +7,6 @@ import br.com.gabrielbrasileiro.combot.core.CombotSetup
 import br.com.gabrielbrasileiro.combot.defaults.CombotActionDefault
 import br.com.gabrielbrasileiro.combot.defaults.CombotAssertDefault
 import br.com.gabrielbrasileiro.combot.defaults.CombotSetupDefault
-import br.com.gabrielbrasileiro.combot.provider.CombotProvider
 import br.com.gabrielbrasileiro.combot.provider.CombotSemantics
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
