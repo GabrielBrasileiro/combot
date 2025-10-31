@@ -15,7 +15,10 @@ android {
     }
 
     publishing {
-        singleVariant("release") {}
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 
     compileOptions {
@@ -41,11 +44,6 @@ dependencies {
     testImplementation(libs.mockk)
 }
 
-tasks.register<Jar>("sourcesJar") {
-    archiveClassifier.set("sources")
-    from(android.sourceSets["main"].java.srcDirs)
-}
-
 afterEvaluate {
     publishing {
         publications {
@@ -54,7 +52,13 @@ afterEvaluate {
 
                 groupId = "br.com.gabrielbrasileiro"
                 artifactId = "combot"
-                version = "0.0.3"
+                version = "0.0.5"
+
+                pom {
+                    name.set("Combot")
+                    description.set("Compose robot testing library")
+                    url.set("https://github.com/gabrielbrasileiro/combot")
+                }
             }
         }
 
