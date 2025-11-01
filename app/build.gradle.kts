@@ -49,6 +49,9 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.androidx.material.icons.extended)
 
+    // Compose Compile Only
+    compileOnly(libs.compose.tooling.preview)
+
     // Koin
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
