@@ -34,14 +34,14 @@ jobs:
         run: ./gradlew build --stacktrace
 
       - name: Run app unit tests
-        run: ./gradlew app:testDebugUnitTest
+        run: ./gradlew :app:testDebugUnitTest
 
       - name: Run combot unit tests
-        run: ./gradlew combot:testDebugUnitTest
+        run: ./gradlew :combot:testDebugUnitTest
 
       - name: Publish combot to GitHub Packages
         if: github.ref == 'refs/heads/main'
+        run: ./gradlew :combot:publish
         env:
           USERNAME: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew combot:publish
