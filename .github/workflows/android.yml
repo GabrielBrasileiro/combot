@@ -1,4 +1,4 @@
-name: Android CI/CD
+name: CI
 
 on:
   push:
@@ -10,52 +10,38 @@ on:
 
 jobs:
   build:
-    name: Run Tests and Publish
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
+          cache: gradle
 
-      - name: Cache Gradle packages
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper/
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            gradle-${{ runner.os }}-
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
-      - name: Grant execute permission for Gradle wrapper
-        run: chmod +x ./gradlew
+      - name: Build project with cache
+        run: ./gradlew build --stacktrace
 
-      # Run combot module unit tests
-      - name: Run Combot Debug Unit Tests
-        run: ./gradlew combot:testDebugUnitTest
-
-      # Run app module unit tests
-      - name: Run App Debug Unit Tests
+      - name: Run app unit tests
         run: ./gradlew app:testDebugUnitTest
 
-      # Run app module instrumented tests (on connected device/emulator)
-      # For GitHub Actions, you can use an emulator with the android emulator action
-      - name: Set up Android Emulator
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 33
-          target: google_apis
-          arch: x86_64
-          script: ./gradlew connectedDebugAndroidTest
+      - name: Run combot unit tests
+        run: ./gradlew combot:testDebugUnitTest
 
-      # Publish combot module to GitHub Packages
-      - name: Publish Combot Module
+      - name: Publish combot to GitHub Packages
+        if: github.ref == 'refs/heads/main'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.actor }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew combot:publish
