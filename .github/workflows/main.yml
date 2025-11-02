@@ -1,0 +1,45 @@
+name: Combot Main CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build project with cache
+        run: ./gradlew build --stacktrace
+
+      - name: Run app unit tests
+        run: ./gradlew :app:testDebugUnitTest
+
+      - name: Run combot unit tests
+        run: ./gradlew :combot:testDebugUnitTest
+
+      - name: Publish combot to GitHub Packages
+        if: github.ref == 'refs/heads/main'
+        run: ./gradlew :combot:publish
+        env:
+          USERNAME: ${{ github.actor }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

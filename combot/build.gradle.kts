@@ -6,6 +6,9 @@ plugins {
     id("maven-publish")
 }
 
+group = "br.com.gabrielbrasileiro"
+version = "0.0.7"
+
 android {
     namespace = "br.com.gabrielbrasileiro.combot"
     compileSdk = 36
@@ -50,9 +53,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 from(components["release"])
 
-                groupId = "br.com.gabrielbrasileiro"
                 artifactId = "combot"
-                version = "0.0.6"
 
                 pom {
                     name.set("Combot")
