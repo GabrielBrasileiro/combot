@@ -36,10 +36,36 @@ jobs:
       - name: Run combot unit tests
         run: ./gradlew :combot:testDebugUnitTest
 
+      - name: Get version from Gradle
+        id: get_version
+        run: |
+          VERSION=$(./gradlew :combot:properties -q | grep '^version:' | awk '{print $2}')
+          if [[ "$VERSION" == "unspecified" ]]; then
+            echo "ERROR: Version not set in Gradle!"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Detected version: $VERSION"
+
       - name: Publish combot to GitHub Packages
         if: github.ref == 'refs/heads/main'
         run: ./gradlew :combot:publish
         env:
           USERNAME: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Git tag automatically
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git fetch --tags
+            
+          if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
+            echo "Tag v${{ env.VERSION }} already exists. Skipping."
+          else
+            echo "Creating tag v${{ env.VERSION }}..."
+            git tag -a "v${{ env.VERSION }}" -m "Release v${{ env.VERSION }}"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git "v${{ env.VERSION }}"
+          fi
 
