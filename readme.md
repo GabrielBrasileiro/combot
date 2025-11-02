@@ -4,7 +4,6 @@
 ![GitHub Actions](https://github.com/GabrielBrasileiro/combot/actions/workflows/build.yml/badge.svg)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
 ![Latest Version](https://img.shields.io/maven-metadata/v/https://maven.pkg.github.com/GabrielBrasileiro/combot/br/com/gabrielbrasileiro/combot/maven-metadata.xml.svg)
-
 ## Description
 
 Combot is a Compose testing library designed to simplify testing and automation of UI components in
