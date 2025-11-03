@@ -1,6 +1,8 @@
 <div style="text-align: left;">
-  <img src="./logo.png" width="300" style="margin: 20px 0;" />
+  <img src="./logo.png" width="400" />
 </div>
+
+<br>
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-blue)
 ![GitHub Actions](https://github.com/GabrielBrasileiro/combot/actions/workflows/main.yml/badge.svg?branch=main)
