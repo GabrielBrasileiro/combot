@@ -3,7 +3,6 @@
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-blue)
 ![GitHub Actions](https://github.com/GabrielBrasileiro/combot/actions/workflows/main.yml/badge.svg?branch=main)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
-![Latest Release](https://img.shields.io/github/v/release/GabrielBrasileiro/combot?color=blue)
 
 ## Description
 
@@ -21,13 +20,13 @@ interact with UI elements programmatically.
 ### Maven
 
 ```groovy
-repositories {
-    mavenCentral()
-
-    // Add for your project
-    maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/GabrielBrasileiro/combot")
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // Add for your project
+        maven { url = uri("https://jitpack.io") }
     }
 }
 ```
@@ -35,13 +34,13 @@ repositories {
 ### Gradle Groovy
 
 ```groovy
-implementation "br.com.gabrielbrasileiro:combot:x.x.x"
+implementation "com.github.GabrielBrasileiro:combot:x.x.x"
 ```
 
 ### Gradle Kts
 
 ```groovy
-implementation("br.com.gabrielbrasileiro:combot:x.x.x")
+implementation("com.github.GabrielBrasileiro:combot:x.x.x")
 ```
 
 ### Gradle Toml + Kts
@@ -51,7 +50,7 @@ implementation("br.com.gabrielbrasileiro:combot:x.x.x")
 combot = "x.x.x"
 
 [libraries]
-combot = { group = "br.com.gabrielbrasileiro", name = "combot", version.ref = "combot" }
+combot = { group = "com.github.GabrielBrasileiro", name = "combot", version.ref = "combot" }
 ```
 
 ```groovy

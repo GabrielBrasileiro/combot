@@ -61,11 +61,11 @@ jobs:
           git config user.email "github-actions@github.com"
           git fetch --tags
             
-          if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
-            echo "Tag v${{ env.VERSION }} already exists. Skipping."
+          if git rev-parse "${{ env.VERSION }}" >/dev/null 2>&1; then
+            echo "Tag ${{ env.VERSION }} already exists. Skipping."
           else
-            echo "Creating tag v${{ env.VERSION }}..."
-            git tag -a "v${{ env.VERSION }}" -m "Release v${{ env.VERSION }}"
-            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git "v${{ env.VERSION }}"
+            echo "Creating tag ${{ env.VERSION }}..."
+            git tag -a "${{ env.VERSION }}" -m "Release ${{ env.VERSION }}"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git "${{ env.VERSION }}"
           fi
 
