@@ -1,4 +1,4 @@
-# Combot
+![alt text](./logo.png)
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-blue)
 ![GitHub Actions](https://github.com/GabrielBrasileiro/combot/actions/workflows/main.yml/badge.svg?branch=main)
@@ -18,11 +18,26 @@ interact with UI elements programmatically.
 
 ## Installation
 
+### Maven
+
+```groovy
+repositories {
+    mavenCentral()
+
+    // Add for your project
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/GabrielBrasileiro/combot")
+    }
+}
+```
+
 ### Gradle Groovy
 
 ```groovy
 implementation "br.com.gabrielbrasileiro:combot:x.x.x"
 ```
+
 ### Gradle Kts
 
 ```groovy
@@ -57,4 +72,3 @@ This site includes:
 - API reference
 - Advanced usage patterns
 - Tips for testing Compose UI components
-
