@@ -1,8 +1,11 @@
-![alt text](./logo.png)
+<div style="text-align: left;">
+  <img src="./logo.png" width="300" style="margin: 20px 0;" />
+</div>
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-blue)
 ![GitHub Actions](https://github.com/GabrielBrasileiro/combot/actions/workflows/main.yml/badge.svg?branch=main)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
+![JitPack](https://img.shields.io/jitpack/version/com.github.GabrielBrasileiro/combot.svg?color=blue)
 
 ## Description
 
