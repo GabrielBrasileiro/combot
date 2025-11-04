@@ -47,21 +47,14 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Detected version: $VERSION"
 
-      - name: Publish combot to GitHub Packages
-        if: github.ref == 'refs/heads/main'
-        run: ./gradlew :combot:publish
-        env:
-          USERNAME: ${{ github.actor }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create Git tag automatically
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "Gabriel Brasileiro"
           git config user.email "gah.lucas@gmail.com"
           git fetch --tags
-            
-          if git rev-parse "${{ env.VERSION }}" >/dev/null 2>&1; then
+          
+          if git tag --list "${{ env.VERSION }}" | grep -q "${{ env.VERSION }}"; then
             echo "Tag ${{ env.VERSION }} already exists. Skipping."
           else
             echo "Creating tag ${{ env.VERSION }}..."
