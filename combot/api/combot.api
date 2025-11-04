@@ -1,0 +1,78 @@
+public final class br/com/gabrielbrasileiro/combot/arrange/CombotArrangement {
+	public final fun action (Lkotlin/jvm/functions/Function1;)Lbr/com/gabrielbrasileiro/combot/arrange/CombotArrangement;
+	public final fun assert (Lkotlin/jvm/functions/Function1;)Lbr/com/gabrielbrasileiro/combot/arrange/CombotArrangement;
+	public final fun getActionScope ()Lbr/com/gabrielbrasileiro/combot/core/CombotAction;
+	public final fun getAssertScope ()Lbr/com/gabrielbrasileiro/combot/core/CombotAssert;
+	public final fun getRule ()Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;
+	public final fun getSetupScope ()Lbr/com/gabrielbrasileiro/combot/core/CombotSetup;
+	public final fun setup (Lkotlin/jvm/functions/Function2;)Lbr/com/gabrielbrasileiro/combot/arrange/CombotArrangement;
+}
+
+public class br/com/gabrielbrasileiro/combot/core/CombotAction : androidx/compose/ui/test/SemanticsNodeInteractionsProvider {
+	public fun <init> ()V
+	public fun <init> (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;)V
+	public synthetic fun <init> (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun onAllNodes (Landroidx/compose/ui/test/SemanticsMatcher;Z)Landroidx/compose/ui/test/SemanticsNodeInteractionCollection;
+	public fun onNode (Landroidx/compose/ui/test/SemanticsMatcher;Z)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+}
+
+public class br/com/gabrielbrasileiro/combot/core/CombotAssert : androidx/compose/ui/test/SemanticsNodeInteractionsProvider {
+	public fun <init> ()V
+	public fun <init> (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;)V
+	public synthetic fun <init> (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun onAllNodes (Landroidx/compose/ui/test/SemanticsMatcher;Z)Landroidx/compose/ui/test/SemanticsNodeInteractionCollection;
+	public fun onNode (Landroidx/compose/ui/test/SemanticsMatcher;Z)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+}
+
+public class br/com/gabrielbrasileiro/combot/core/CombotSetup {
+	public fun <init> ()V
+	protected fun onFinished ()V
+	protected fun onStart ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/defaults/CombotActionDefault : br/com/gabrielbrasileiro/combot/core/CombotAction {
+	public fun <init> ()V
+	public final fun emitCombotActionError ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/defaults/CombotAssertDefault : br/com/gabrielbrasileiro/combot/core/CombotAssert {
+	public fun <init> ()V
+	public final fun emitCombotAssertError ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/defaults/CombotSetupDefault : br/com/gabrielbrasileiro/combot/core/CombotSetup {
+	public fun <init> ()V
+	public final fun emitCombotSetupError ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/errors/CombotActionNotImplementedException : java/lang/Exception {
+	public fun <init> ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/errors/CombotAssertNotImplementedException : java/lang/Exception {
+	public fun <init> ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/errors/CombotSemanticsNotPresentError : java/lang/Exception {
+	public fun <init> ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/errors/CombotSetupNotImplementedException : java/lang/Exception {
+	public fun <init> ()V
+}
+
+public final class br/com/gabrielbrasileiro/combot/rule/CombotTestRule : org/junit/rules/TestWatcher {
+	public fun <init> (Lbr/com/gabrielbrasileiro/combot/arrange/CombotArrangement;)V
+	public fun finished (Lorg/junit/runner/Description;)V
+	public final fun getArrangement ()Lbr/com/gabrielbrasileiro/combot/arrange/CombotArrangement;
+	public fun starting (Lorg/junit/runner/Description;)V
+}
+
+public final class br/com/gabrielbrasileiro/combot/rule/CombotTestRuleKt {
+	public static final fun createCombotRule (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Lbr/com/gabrielbrasileiro/combot/rule/CombotTestRule;
+	public static final fun createCombotRuleNoAction (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Lbr/com/gabrielbrasileiro/combot/rule/CombotTestRule;
+	public static final fun createCombotRuleNoAssert (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Lbr/com/gabrielbrasileiro/combot/rule/CombotTestRule;
+	public static final fun createCombotRuleNoSetup (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;)Lbr/com/gabrielbrasileiro/combot/rule/CombotTestRule;
+	public static final fun createCombotRuleOnlyAssert (Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Lkotlin/jvm/functions/Function0;)Lbr/com/gabrielbrasileiro/combot/rule/CombotTestRule;
+}
+

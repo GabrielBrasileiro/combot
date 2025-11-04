@@ -24,6 +24,9 @@ junitVersion = "1.3.0"
 mockk = "1.14.6"
 turbine = "1.2.1"
 
+# Tools
+binaryValidator = "0.18.1"
+
 # Android Tests
 espressoCore = "3.7.0"
 
@@ -69,4 +72,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Tools
+kotlinBinary = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryValidator" }
 
