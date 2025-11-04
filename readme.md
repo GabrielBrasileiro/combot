@@ -12,8 +12,7 @@
 ## Description
 
 Combot is a Compose testing library designed to simplify testing and automation of UI components in
-Jetpack Compose. It allows developers to write reliable tests for Composable functions and
-interactions, similar to how Koin simplifies dependency injection in Android.
+Jetpack Compose. It allows developers to easily write tests for Compose components.
 
 Implementation is inspired by modern Compose testing patterns and provides a straightforward API to
 interact with UI elements programmatically.
