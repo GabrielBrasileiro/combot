@@ -23,7 +23,7 @@ interact with UI elements programmatically.
 
 ### Maven
 
-```groovy
+```kotlin
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -35,21 +35,15 @@ dependencyResolutionManagement {
 }
 ```
 
-### Gradle Groovy
-
-```groovy
-implementation "com.github.GabrielBrasileiro:combot:x.x.x"
-```
-
 ### Gradle Kts
 
-```groovy
+```kotlin
 implementation("com.github.GabrielBrasileiro:combot:x.x.x")
 ```
 
 ### Gradle Toml + Kts
 
-```groovy
+```toml
 [versions]
 combot = "x.x.x"
 
@@ -57,7 +51,7 @@ combot = "x.x.x"
 combot = { group = "com.github.GabrielBrasileiro", name = "combot", version.ref = "combot" }
 ```
 
-```groovy
+```kotlin
 dependencies {
     implementation(libs.combot)
 }
