@@ -1,4 +1,4 @@
-name: Combot Main CI
+name: Tests
 
 on:
   push:
@@ -28,13 +28,23 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build project with cache
-        run: ./gradlew build --stacktrace
+        run: ./gradlew assembleDebug --stacktrace
 
       - name: Run app unit tests
         run: ./gradlew :app:testDebugUnitTest
 
       - name: Run combot unit tests
         run: ./gradlew :combot:testDebugUnitTest
+
+      - name: Run UI tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          profile: Nexus 6
+          disable-animations: true
+          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-accel
+          script: ./gradlew :app:connectedDebugAndroidTest --continue
 
       - name: Get version from Gradle
         id: get_version
