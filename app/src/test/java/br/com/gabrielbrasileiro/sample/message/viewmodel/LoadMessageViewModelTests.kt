@@ -1,6 +1,7 @@
 package br.com.gabrielbrasileiro.sample.message.viewmodel
 
 import app.cash.turbine.test
+import app.cash.turbine.turbineScope
 import br.com.gabrielbrasileiro.sample.message.domain.usecase.DefaultMessageUseCase
 import br.com.gabrielbrasileiro.sample.message.domain.usecase.NewMessageUseCase
 import io.mockk.coEvery
@@ -48,27 +49,24 @@ class LoadMessageViewModelTest {
     fun `loadNewMessage Should update message and loading states`() = runTest {
         // Given
         val newMessage = "Hello Combot!"
-        val skipFirstMessage = 1
+        val skipFirst = 1
 
         coEvery { newMessageUseCase.getMessage() } returns flow { emit(newMessage) }
 
-        viewModel.message.test {
-            val messageState = this
+        turbineScope {
+            val messageState = viewModel.message.testIn(backgroundScope)
+            val loadingState = viewModel.loading.testIn(backgroundScope)
 
-            viewModel.loading.test {
-                val loadingState = this
+            // When
+            viewModel.loadNewMessage()
 
-                // When
-                viewModel.loadNewMessage()
+            // Then
+            messageState.skipItems(skipFirst)
+            loadingState.skipItems(skipFirst)
 
-                // Then
-                messageState.skipItems(skipFirstMessage)
-
-                assertFalse(loadingState.awaitItem())
-                assertTrue(loadingState.awaitItem())
-                assertEquals(newMessage, messageState.awaitItem())
-                assertFalse(loadingState.awaitItem())
-            }
+            assertTrue(loadingState.awaitItem())
+            assertEquals(newMessage, messageState.awaitItem())
+            assertFalse(loadingState.awaitItem())
         }
     }
 }
