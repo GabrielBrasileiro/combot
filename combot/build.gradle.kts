@@ -3,12 +3,12 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlinBinary)
+    alias(libs.plugins.kotlin.binary)
     id("maven-publish")
 }
 
 group = "br.com.gabrielbrasileiro"
-version = "1.0.5"
+version = "1.0.6"
 
 android {
     namespace = "br.com.gabrielbrasileiro.combot"

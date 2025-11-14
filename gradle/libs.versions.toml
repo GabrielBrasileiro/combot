@@ -74,5 +74,5 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 # Tools
-kotlinBinary = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryValidator" }
+kotlin-binary = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryValidator" }
 
