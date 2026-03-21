@@ -1,7 +1,7 @@
 [versions]
 agp = "8.11.2"
-kotlin = "2.2.21"
-coreKtx = "1.17.0"
+kotlin = "2.3.20"
+coreKtx = "1.18.0"
 
 # Android
 appcompat = "1.7.1"
@@ -9,11 +9,11 @@ material = "1.13.0"
 materialIconsExtended = "1.7.8"
 
 # Koin
-koin-bom = "4.1.1"
+koin-bom = "4.2.0"
 
 # Compose
-compose = "2025.10.01"
-uiTestAndroid = "1.9.4"
+compose = "2026.03.00"
+uiTestAndroid = "1.10.5"
 
 # Coroutines
 coroutines = "1.10.2"
@@ -21,7 +21,7 @@ coroutines = "1.10.2"
 # Tests
 junit = "4.13.2"
 junitVersion = "1.3.0"
-mockk = "1.14.6"
+mockk = "1.14.9"
 turbine = "1.2.1"
 
 # Tools
