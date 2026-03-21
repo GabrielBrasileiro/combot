@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "br.com.gabrielbrasileiro"
-version = "1.0.6"
+version = "1.0.7"
 
 android {
     namespace = "br.com.gabrielbrasileiro.combot"

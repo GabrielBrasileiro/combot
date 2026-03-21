@@ -15,5 +15,4 @@ class LoadMessageCombotAssert : CombotAssert() {
         onNodeWithText(NEW_MESSAGE).assertExists()
     }
 
-
 }

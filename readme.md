@@ -63,9 +63,8 @@ For full documentation, examples, and guides on how to use Combot, please visit:
 
 [https://gabrielbrasileiro.dev/combot](https://gabrielbrasileiro.dev/combot)
 
-This site includes:
+## MCP
 
-- Quick start examples
-- API reference
-- Advanced usage patterns
-- Tips for testing Compose UI components
+For full documentation on Combot MCP and how to integrate it with your AI assistant:
+
+[https://gabrielbrasileiro.dev/combot-mcp](https://gabrielbrasileiro.dev/combot-mcp)
