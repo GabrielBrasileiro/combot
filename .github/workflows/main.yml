@@ -43,7 +43,7 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           disable-animations: true
-          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-accel
+          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: ./gradlew :app:connectedDebugAndroidTest --continue
 
       - name: Get version from Gradle
