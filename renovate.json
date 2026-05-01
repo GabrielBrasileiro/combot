@@ -5,15 +5,5 @@
   "automergeType": "pr",
   "platformAutomerge": true,
   "prCreation": "not-pending",
-  "rebaseWhen": "behind-base-branch",
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["minor"],
-      "automerge": false
-    }
-  ]
+  "rebaseWhen": "behind-base-branch"
 }
