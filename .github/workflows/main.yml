@@ -39,40 +39,18 @@ jobs:
       - name: Run UI tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: 30
           arch: x86_64
           profile: pixel
           disable-animations: true
-          emulator-options: >
-            -no-snapshot
-            -no-window
-            -gpu swiftshader_indirect
-            -noaudio
-            -no-boot-anim
+          emulator-options: >        
+            -no-window     
+            -gpu swiftshader_indirect     
+            -noaudio     
+            -no-boot-anim    
             -camera-back none
-            -accel off
-          script: |
-            adb wait-for-device
-            echo "Waiting for emulator to fully boot..."
-
-            boot_completed=""
-            for i in {1..150}; do
-              boot_completed=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
-              if [ "$boot_completed" = "1" ]; then
-                echo "Emulator boot completed!"
-                break
-              fi
-              sleep 2
-            done
-
-            if [ "$boot_completed" != "1" ]; then
-              echo "Emulator failed to boot in time"
-              exit 1
-            fi
-
-            adb shell input keyevent 82
-
-            ./gradlew :app:connectedDebugAndroidTest --continue
+            -no-snapshot-save
+          script: ./gradlew :app:connectedDebugAndroidTest --continue
 
       - name: Get version from Gradle
         id: get_version
