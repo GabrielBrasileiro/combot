@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     permissions:
       contents: write
@@ -40,16 +40,20 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
+          target: google_apis
           arch: x86_64
-          profile: pixel
+          profile: pixel_6
+          cores: 2
+          ram-size: 2048M
           disable-animations: true
-          emulator-options: >        
-            -no-window     
-            -gpu swiftshader_indirect     
-            -noaudio     
-            -no-boot-anim    
+          emulator-options: >
+            -no-window
+            -gpu host
+            -noaudio
+            -no-boot-anim
             -camera-back none
             -no-snapshot-save
+            -no-snapshot-load
           script: ./gradlew :app:connectedDebugAndroidTest --continue
 
       - name: Get version from Gradle
