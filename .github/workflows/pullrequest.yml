@@ -53,19 +53,23 @@ jobs:
             -accel off
           script: |
             adb wait-for-device
-
             echo "Waiting for emulator to fully boot..."
 
-            # Wait until Android system is ready
-            timeout 300 bash -c '
-              until adb shell getprop sys.boot_completed | tr -d "\r" | grep -q "1"; do
-                sleep 2
-              done
-            '
+            boot_completed=""
+            for i in {1..150}; do
+              boot_completed=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
+              if [ "$boot_completed" = "1" ]; then
+                echo "Emulator boot completed!"
+                break
+              fi
+              sleep 2
+            done
 
-            echo "Emulator boot completed!"
+            if [ "$boot_completed" != "1" ]; then
+              echo "Emulator failed to boot in time"
+              exit 1
+            fi
 
-            # Unlock screen (prevents UI test issues)
             adb shell input keyevent 82
 
             ./gradlew :app:connectedDebugAndroidTest --continue
