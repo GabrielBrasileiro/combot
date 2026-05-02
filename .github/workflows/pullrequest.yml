@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
 
     permissions:
       contents: read
@@ -40,18 +40,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
-          target: google_apis
-          arch: arm64-v8a
-          profile: pixel_6
-          cores: 2
-          ram-size: 2048M
+          arch: x86_64
           disable-animations: true
-          emulator-options: >
-            -no-window
-            -gpu host
-            -noaudio
-            -no-boot-anim
-            -camera-back none
-            -no-snapshot-save
-            -no-snapshot-load
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           script: ./gradlew :app:connectedDebugAndroidTest --continue
