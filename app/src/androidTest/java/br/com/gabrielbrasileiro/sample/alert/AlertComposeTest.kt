@@ -1,6 +1,6 @@
 package br.com.gabrielbrasileiro.sample.alert
 
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import br.com.gabrielbrasileiro.combot.rule.createCombotRule
 import br.com.gabrielbrasileiro.sample.alert.combot.AlertCombotAssert
 import org.junit.Before
