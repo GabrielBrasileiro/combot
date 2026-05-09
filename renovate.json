@@ -5,5 +5,6 @@
   "automergeType": "pr",
   "platformAutomerge": true,
   "prCreation": "not-pending",
-  "rebaseWhen": "behind-base-branch"
+  "rebaseWhen": "behind-base-branch",
+  "dependencyDashboard": false
 }

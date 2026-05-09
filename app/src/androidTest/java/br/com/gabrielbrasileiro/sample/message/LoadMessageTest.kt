@@ -1,6 +1,6 @@
 package br.com.gabrielbrasileiro.sample.message
 
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.v2.createComposeRule
 import br.com.gabrielbrasileiro.combot.rule.createCombotRule
 import br.com.gabrielbrasileiro.sample.message.combot.LoadMessageCombotAction
 import br.com.gabrielbrasileiro.sample.message.combot.LoadMessageCombotAssert

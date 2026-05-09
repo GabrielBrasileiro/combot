@@ -16,7 +16,7 @@ compose = "2026.05.00"
 uiTestAndroid = "1.11.1"
 
 # Coroutines
-coroutines = "1.10.2"
+coroutines = "1.11.0"
 
 # Tests
 junit = "4.13.2"
