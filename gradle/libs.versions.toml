@@ -5,7 +5,7 @@ coreKtx = "1.18.0"
 
 # Android
 appcompat = "1.7.1"
-material = "1.13.0"
+material = "1.14.0"
 materialIconsExtended = "1.7.8"
 
 # Koin
