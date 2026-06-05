@@ -1,7 +1,7 @@
 [versions]
 agp = "9.2.1"
 kotlin = "2.4.0"
-coreKtx = "1.18.0"
+coreKtx = "1.19.0"
 
 # Android
 appcompat = "1.7.1"
