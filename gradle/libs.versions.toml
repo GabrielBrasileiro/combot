@@ -9,7 +9,7 @@ material = "1.14.0"
 materialIconsExtended = "1.7.8"
 
 # Koin
-koin-bom = "4.2.1"
+koin-bom = "4.2.2"
 
 # Compose
 compose = "2026.05.01"
