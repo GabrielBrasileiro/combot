@@ -1,6 +1,6 @@
 package br.com.gabrielbrasileiro.combot.defaults
 
-import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
+import androidx.compose.ui.test.junit4.ComposeTestRule
 import br.com.gabrielbrasileiro.combot.errors.CombotAssertNotImplementedException
 import br.com.gabrielbrasileiro.combot.provider.CombotProvider
 import io.mockk.mockk
@@ -9,12 +9,12 @@ import org.junit.Test
 
 class CombotAssertDefaultTest {
 
-    private val provider = mockk<SemanticsNodeInteractionsProvider>()
+    private val provider = mockk<ComposeTestRule>()
 
     @Test
     fun `emitCombotAssertError Should throw CombotAssertNotImplementedException when instantiated`() {
         // Given
-        CombotProvider.setSemantics(provider)
+        CombotProvider.setRule(provider)
 
         val combotAssert = CombotAssertDefault()
 

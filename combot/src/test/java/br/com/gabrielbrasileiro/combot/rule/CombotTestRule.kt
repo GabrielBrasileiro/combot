@@ -7,14 +7,14 @@ import br.com.gabrielbrasileiro.combot.core.CombotSetup
 import br.com.gabrielbrasileiro.combot.defaults.CombotActionDefault
 import br.com.gabrielbrasileiro.combot.defaults.CombotAssertDefault
 import br.com.gabrielbrasileiro.combot.defaults.CombotSetupDefault
-import br.com.gabrielbrasileiro.combot.provider.CombotSemantics
+import br.com.gabrielbrasileiro.combot.provider.CombotRule
 import io.mockk.mockk
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class CombotTestRuleTest {
 
-    private val semantics = mockk<CombotSemantics>()
+    private val semantics = mockk<CombotRule>()
 
     @Test
     fun `starting should call setup onStart`() {

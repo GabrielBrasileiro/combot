@@ -1,7 +1,7 @@
 package br.com.gabrielbrasileiro.combot.provider
 
-import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
-import br.com.gabrielbrasileiro.combot.errors.CombotSemanticsNotPresentError
+import androidx.compose.ui.test.junit4.ComposeTestRule
+import br.com.gabrielbrasileiro.combot.errors.CombotComposeTestRuleNotAvailableError
 import io.mockk.mockk
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertSame
@@ -11,20 +11,20 @@ import org.junit.Test
 
 class CombotProviderTest {
 
-    private val provider = mockk<SemanticsNodeInteractionsProvider>()
+    private val provider = mockk<ComposeTestRule>()
 
     @Before
     fun setup() {
-        CombotProvider.setSemantics(null)
+        CombotProvider.setRule(null)
     }
 
     @Test
     fun `setSemantics Should store and retrieve the same instance`() {
         // Given
-        CombotProvider.setSemantics(provider)
+        CombotProvider.setRule(provider)
 
         // When
-        val result = runCatching { CombotProvider.requireSemantics() }
+        val result = runCatching { CombotProvider.requireRule() }
 
         // Then
         assertNotNull(result.getOrNull())
@@ -34,26 +34,26 @@ class CombotProviderTest {
     @Test
     fun `requireSemantics Should emit an exception When semantics not provided`() {
         // Given
-        CombotProvider.setSemantics(null)
+        CombotProvider.setRule(null)
 
         // When
-        val result = runCatching { CombotProvider.requireSemantics() }
+        val result = runCatching { CombotProvider.requireRule() }
 
         // Then
-        assertTrue(result.exceptionOrNull() is CombotSemanticsNotPresentError)
+        assertTrue(result.exceptionOrNull() is CombotComposeTestRuleNotAvailableError)
     }
 
     @Test
     fun `requireSemantics Should emit an exception When set semantics clear the instance`() {
         // Given
-        CombotProvider.setSemantics(provider)
-        CombotProvider.setSemantics(null)
+        CombotProvider.setRule(provider)
+        CombotProvider.setRule(null)
 
         // When
-        val result = runCatching { CombotProvider.requireSemantics() }
+        val result = runCatching { CombotProvider.requireRule() }
 
         // Then
-        assertTrue(result.exceptionOrNull() is CombotSemanticsNotPresentError)
+        assertTrue(result.exceptionOrNull() is CombotComposeTestRuleNotAvailableError)
     }
 
 }

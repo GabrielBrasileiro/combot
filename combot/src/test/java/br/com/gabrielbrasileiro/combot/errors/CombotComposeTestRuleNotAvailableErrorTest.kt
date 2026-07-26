@@ -4,15 +4,15 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class CombotSemanticsNotPresentErrorTest {
+class CombotComposeTestRuleNotAvailableErrorTest {
 
     @Test
     fun `CombotSemanticsNotPresentError init Should emit correct message`() {
         // Given
-        val expectedMessage = "SemanticsNodeInteractionsProvider not defined!"
+        val expectedMessage = "ComposeTestRule not defined!"
 
         // When
-        val result = runCatching { throw CombotSemanticsNotPresentError() }
+        val result = runCatching { throw CombotComposeTestRuleNotAvailableError() }
 
         // Then
         assertTrue(result.isFailure)
@@ -22,7 +22,7 @@ class CombotSemanticsNotPresentErrorTest {
     @Test
     fun `CombotSemanticsNotPresentError init Should be instance of Exception`() {
         // Given
-        val exception = CombotSemanticsNotPresentError()
+        val exception = CombotComposeTestRuleNotAvailableError()
 
         // When
         val result = runCatching { throw exception }

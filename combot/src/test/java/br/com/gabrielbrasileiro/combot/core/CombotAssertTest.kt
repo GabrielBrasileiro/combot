@@ -1,7 +1,7 @@
 package br.com.gabrielbrasileiro.combot.core
 
-import androidx.compose.ui.test.SemanticsNodeInteractionsProvider
-import br.com.gabrielbrasileiro.combot.errors.CombotSemanticsNotPresentError
+import androidx.compose.ui.test.junit4.ComposeTestRule
+import br.com.gabrielbrasileiro.combot.errors.CombotComposeTestRuleNotAvailableError
 import br.com.gabrielbrasileiro.combot.provider.CombotProvider
 import io.mockk.mockk
 import org.junit.Assert.assertNotNull
@@ -10,12 +10,12 @@ import org.junit.Test
 
 class CombotAssertTest {
 
-    private val provider = mockk<SemanticsNodeInteractionsProvider>()
+    private val provider = mockk<ComposeTestRule>()
 
     @Test
-    fun `CombotAssert init Should provide a default SemanticsNodeInteractionsProvider`() {
+    fun `CombotAssert init Should provide a default ComposeTestRule`() {
         // Given
-        CombotProvider.setSemantics(provider)
+        CombotProvider.setRule(provider)
 
         // When
         val result = runCatching { CombotAssert() }
@@ -27,12 +27,12 @@ class CombotAssertTest {
     @Test
     fun `CombotAssert init Should emit an exception When semantics not provided`() {
         // Given
-        CombotProvider.setSemantics(null)
+        CombotProvider.setRule(null)
 
         // When
         val result = runCatching { CombotAssert() }
 
         // Then
-        assertTrue(result.exceptionOrNull() is CombotSemanticsNotPresentError)
+        assertTrue(result.exceptionOrNull() is CombotComposeTestRuleNotAvailableError)
     }
 }
