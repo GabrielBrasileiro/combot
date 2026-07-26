@@ -28,6 +28,7 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        // Add for your project if not declared
         mavenCentral()
     }
 }
