@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "io.github.gabrielbrasileiro"
-version = "1.0.12"
+version = "1.0.13"
 
 android {
     namespace = "br.com.gabrielbrasileiro.combot"
