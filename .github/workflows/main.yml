@@ -63,16 +63,29 @@ jobs:
           echo "Detected version: $VERSION"
 
       - name: Create Git tag automatically
+        id: create_tag
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "Gabriel Brasileiro"
           git config user.email "gah.lucas@gmail.com"
           git fetch --tags
-          
+
           if git tag --list "${{ env.VERSION }}" | grep -q "${{ env.VERSION }}"; then
             echo "Tag ${{ env.VERSION }} already exists. Skipping."
+            echo "tag_created=false" >> "$GITHUB_OUTPUT"
           else
             echo "Creating tag ${{ env.VERSION }}..."
             git tag -a "${{ env.VERSION }}" -m "Release ${{ env.VERSION }}"
             git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git "${{ env.VERSION }}"
+            echo "tag_created=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Publish to Maven Central
+        if: github.ref == 'refs/heads/main' && steps.create_tag.outputs.tag_created == 'true'
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_IN_MEMORY_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_IN_MEMORY_KEY_PASSWORD }}
+
+        run: ./gradlew :combot:publishAndReleaseToMavenCentral
