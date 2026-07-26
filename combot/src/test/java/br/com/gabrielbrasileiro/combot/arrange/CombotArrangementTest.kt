@@ -9,7 +9,7 @@ import br.com.gabrielbrasileiro.combot.defaults.CombotSetupDefault
 import br.com.gabrielbrasileiro.combot.errors.CombotActionNotImplementedException
 import br.com.gabrielbrasileiro.combot.errors.CombotAssertNotImplementedException
 import br.com.gabrielbrasileiro.combot.errors.CombotSetupNotImplementedException
-import br.com.gabrielbrasileiro.combot.provider.CombotSemantics
+import br.com.gabrielbrasileiro.combot.provider.CombotRule
 import io.mockk.mockk
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
@@ -26,7 +26,7 @@ class CombotArrangementTest {
     fun `setup Should be invoked When success`() {
         // Given
         val arrangement = createDefaultArrangement()
-        var currentRule: CombotSemantics? = null
+        var currentRule: CombotRule? = null
 
         // When
         val result = arrangement setup { rule ->
@@ -134,7 +134,7 @@ class CombotArrangementTest {
         assert = { assert }
     )
 
-    interface FakeSemantics : CombotSemantics
+    interface FakeSemantics : CombotRule
     class FakeSetup : CombotSetup()
     class FakeAction : CombotAction()
     class FakeAssert : CombotAssert()

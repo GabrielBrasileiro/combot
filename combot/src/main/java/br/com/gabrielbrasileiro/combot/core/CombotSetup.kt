@@ -3,6 +3,7 @@ package br.com.gabrielbrasileiro.combot.core
 import br.com.gabrielbrasileiro.combot.arrange.CombotArrangement
 import br.com.gabrielbrasileiro.combot.errors.CombotSetupNotImplementedException
 import br.com.gabrielbrasileiro.combot.defaults.CombotSetupDefault
+import br.com.gabrielbrasileiro.combot.rule.CombotTestRule
 
 /**
  * Base class representing the setup phase of a Combot test arrangement.

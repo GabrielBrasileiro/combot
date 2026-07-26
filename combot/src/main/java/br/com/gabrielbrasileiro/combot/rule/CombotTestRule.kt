@@ -10,7 +10,7 @@ import br.com.gabrielbrasileiro.combot.defaults.CombotSetupDefault
 import br.com.gabrielbrasileiro.combot.errors.CombotActionNotImplementedException
 import br.com.gabrielbrasileiro.combot.errors.CombotAssertNotImplementedException
 import br.com.gabrielbrasileiro.combot.errors.CombotSetupNotImplementedException
-import br.com.gabrielbrasileiro.combot.provider.CombotSemantics
+import br.com.gabrielbrasileiro.combot.provider.CombotRule
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
@@ -27,14 +27,14 @@ import org.junit.runner.Description
  * It acts as the entry point for executing Combot-based test flows, coordinating the
  * setup, action, and assert stages defined in a [CombotArrangement].
  *
- * @param R The [CombotSemantics] type defining UI semantics or contextual accessors for the test.
+ * @param R The [CombotRule] type defining UI semantics or contextual accessors for the test.
  * @param STP The [CombotSetup] type representing initialization logic before actions and assertions.
  * @param ACT The [CombotAction] type representing the actions or events to perform.
  * @param AST The [CombotAssert] type representing validation or verification logic.
  *
  * @property arrangement The full [CombotArrangement] containing setup, action, and assert definitions.
  */
-class CombotTestRule<R : CombotSemantics, STP : CombotSetup, ACT : CombotAction, AST : CombotAssert>(
+class CombotTestRule<R : CombotRule, STP : CombotSetup, ACT : CombotAction, AST : CombotAssert>(
     val arrangement: CombotArrangement<R, STP, ACT, AST>
 ) : TestWatcher() {
 
@@ -72,7 +72,7 @@ class CombotTestRule<R : CombotSemantics, STP : CombotSetup, ACT : CombotAction,
  * @return A [CombotTestRule] encapsulating the full arrangement.
  */
 @JvmName("createCombotRule")
-fun <R : CombotSemantics, STP : CombotSetup, ACT : CombotAction, AST : CombotAssert> createCombotRule(
+fun <R : CombotRule, STP : CombotSetup, ACT : CombotAction, AST : CombotAssert> createCombotRule(
     rule: R,
     setup: () -> STP,
     action: () -> ACT,
@@ -97,7 +97,7 @@ fun <R : CombotSemantics, STP : CombotSetup, ACT : CombotAction, AST : CombotAss
  * @return A [CombotTestRule] with default setup and provided action/assert.
  */
 @JvmName("createCombotRuleNoSetup")
-fun <R : CombotSemantics, ACT : CombotAction, AST : CombotAssert> createCombotRule(
+fun <R : CombotRule, ACT : CombotAction, AST : CombotAssert> createCombotRule(
     rule: R,
     action: () -> ACT,
     assert: () -> AST
@@ -128,7 +128,7 @@ fun <R : CombotSemantics, ACT : CombotAction, AST : CombotAssert> createCombotRu
  * @return A [CombotTestRule] with default action and provided setup/assert.
  */
 @JvmName("createCombotRuleNoAction")
-fun <R : CombotSemantics, STP : CombotSetup, AST : CombotAssert> createCombotRule(
+fun <R : CombotRule, STP : CombotSetup, AST : CombotAssert> createCombotRule(
     rule: R,
     setup: () -> STP,
     assert: () -> AST
@@ -158,7 +158,7 @@ fun <R : CombotSemantics, STP : CombotSetup, AST : CombotAssert> createCombotRul
  * @return A [CombotTestRule] with default assert and provided setup/action.
  */
 @JvmName("createCombotRuleNoAssert")
-fun <R : CombotSemantics, STP : CombotSetup, ACT : CombotAction> createCombotRule(
+fun <R : CombotRule, STP : CombotSetup, ACT : CombotAction> createCombotRule(
     rule: R,
     setup: () -> STP,
     action: () -> ACT
@@ -190,7 +190,7 @@ fun <R : CombotSemantics, STP : CombotSetup, ACT : CombotAction> createCombotRul
  * @return A [CombotTestRule] with default setup/action and provided assert.
  */
 @JvmName("createCombotRuleOnlyAssert")
-fun <R : CombotSemantics, AST : CombotAssert> createCombotRule(
+fun <R : CombotRule, AST : CombotAssert> createCombotRule(
     rule: R,
     assert: () -> AST
 ): CombotTestRule<R, *, *, AST> {

@@ -10,7 +10,7 @@ import br.com.gabrielbrasileiro.combot.errors.CombotActionNotImplementedExceptio
 import br.com.gabrielbrasileiro.combot.errors.CombotAssertNotImplementedException
 import br.com.gabrielbrasileiro.combot.errors.CombotSetupNotImplementedException
 import br.com.gabrielbrasileiro.combot.provider.CombotProvider
-import br.com.gabrielbrasileiro.combot.provider.CombotSemantics
+import br.com.gabrielbrasileiro.combot.provider.CombotRule
 
 /**
  * Encapsulates a full Combot test arrangement including setup, action, and assert stages.
@@ -19,14 +19,14 @@ import br.com.gabrielbrasileiro.combot.provider.CombotSemantics
  * assert blocks are executed in the correct context. It also validates the presence of custom
  * implementations and emits exceptions if default stages are called without user definition.
  *
- * @param R The [CombotSemantics] type representing UI semantics or contextual accessors.
+ * @param R The [CombotRule] type representing UI semantics or contextual accessors.
  * @param STP The [CombotSetup] type defining initialization logic before actions and assertions.
  * @param ACT The [CombotAction] type defining user actions or events to execute.
  * @param AST The [CombotAssert] type defining validation or verification logic.
  *
  * @property rule The semantics provider used for the test.
  */
-class CombotArrangement<R : CombotSemantics, STP : CombotSetup, ACT : CombotAction, AST : CombotAssert> internal constructor(
+class CombotArrangement<R : CombotRule, STP : CombotSetup, ACT : CombotAction, AST : CombotAssert> internal constructor(
     @PublishedApi internal val rule: R,
     private val setup: (() -> STP),
     private val action: (() -> ACT),
@@ -61,7 +61,7 @@ class CombotArrangement<R : CombotSemantics, STP : CombotSetup, ACT : CombotActi
     internal val assertScope by lazy { assert() }
 
     init {
-        CombotProvider.setSemantics(rule)
+        CombotProvider.setRule(rule)
     }
 
     /**
