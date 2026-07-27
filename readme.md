@@ -7,7 +7,7 @@
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.21-blue)
 ![GitHub Actions](https://github.com/GabrielBrasileiro/combot/actions/workflows/main.yml/badge.svg?branch=main)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
-![JitPack](https://img.shields.io/jitpack/version/com.github.GabrielBrasileiro/combot.svg?color=blue)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.gabrielbrasileiro/combot.svg?color=blue)
 
 ## Description
 
@@ -28,9 +28,8 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        // Add for your project if not declared
         mavenCentral()
-        // Add for your project
-        maven { url = uri("https://jitpack.io") }
     }
 }
 ```
@@ -38,7 +37,7 @@ dependencyResolutionManagement {
 ### Gradle Kts
 
 ```kotlin
-implementation("com.github.GabrielBrasileiro:combot:x.x.x")
+implementation("io.github.gabrielbrasileiro:combot:x.x.x")
 ```
 
 ### Gradle Toml + Kts
@@ -48,7 +47,7 @@ implementation("com.github.GabrielBrasileiro:combot:x.x.x")
 combot = "x.x.x"
 
 [libraries]
-combot = { group = "com.github.GabrielBrasileiro", name = "combot", version.ref = "combot" }
+combot = { group = "io.github.gabrielbrasileiro", name = "combot", version.ref = "combot" }
 ```
 
 ```kotlin

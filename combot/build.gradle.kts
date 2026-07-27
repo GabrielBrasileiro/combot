@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "io.github.gabrielbrasileiro"
-version = "1.0.13"
+version = "1.1.0"
 
 android {
     namespace = "br.com.gabrielbrasileiro.combot"
@@ -61,7 +61,7 @@ mavenPublishing {
         name.set("Combot")
         description.set("A declarative Android UI testing library for creating and managing Compose test flows easily.")
         inceptionYear.set("2025")
-        url.set("https://github.com/GabrielBrasileiro/combot/")
+        url.set("https://gabrielbrasileiro.dev/combot")
 
         licenses {
             license {
@@ -75,7 +75,7 @@ mavenPublishing {
             developer {
                 id.set("GabrielBrasileiro")
                 name.set("Gabriel Brasileiro")
-                url.set("https://github.com/GabrielBrasileiro/")
+                url.set("https://gabrielbrasileiro.dev")
             }
         }
 
