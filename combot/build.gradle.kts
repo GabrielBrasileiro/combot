@@ -75,7 +75,7 @@ mavenPublishing {
             developer {
                 id.set("GabrielBrasileiro")
                 name.set("Gabriel Brasileiro")
-                url.set("https://github.com/GabrielBrasileiro/")
+                url.set("https://gabrielbrasileiro.dev")
             }
         }
 
