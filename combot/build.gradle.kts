@@ -61,7 +61,7 @@ mavenPublishing {
         name.set("Combot")
         description.set("A declarative Android UI testing library for creating and managing Compose test flows easily.")
         inceptionYear.set("2025")
-        url.set("https://github.com/GabrielBrasileiro/combot/")
+        url.set("https://gabrielbrasileiro.dev/combot")
 
         licenses {
             license {
