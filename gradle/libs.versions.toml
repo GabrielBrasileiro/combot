@@ -13,7 +13,7 @@ koin-bom = "4.2.2"
 
 # Compose
 compose = "2026.08.00"
-uiTestAndroid = "1.11.4"
+uiTestAndroid = "1.12.0"
 
 # Coroutines
 coroutines = "1.11.0"
