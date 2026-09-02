@@ -25,7 +25,7 @@ mockk = "1.14.11"
 turbine = "1.2.1"
 
 # Tools
-binaryValidator = "0.18.1"
+binaryValidator = "0.18.2"
 
 # Android Tests
 espressoCore = "3.7.0"
